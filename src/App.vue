@@ -1,47 +1,26 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import UserInventory from '@/components/UserInventory.vue'
+import { leftItems } from '@/components/mocks/leftItems.ts'
+import { rightItems } from '@/components/mocks/rightItems.ts'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="container">
+    <user-inventory :items="leftItems" :max-selected-count="6" />
+    <user-inventory :items="rightItems" />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<style scoped lang="scss">
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+@media screen and (max-width: 1023px) {
+  .container {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
   }
 }
 </style>
